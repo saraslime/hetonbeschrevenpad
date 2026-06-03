@@ -1064,6 +1064,7 @@ section { scroll-margin-top: 72px; }
         <li><a href="#">Workshops</a></li>
         <li><a href="#">Webinars</a></li>
         <li><a href="#reviews">Reviews</a></li>
+      </ul>
     </div>
     <div class="footer-kolom">
       <h4>Volg ons</h4>
@@ -1082,7 +1083,8 @@ section { scroll-margin-top: 72px; }
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
 function openCart() {
   document.getElementById('cartOverlay').classList.add('open');
   document.getElementById('cartPanel').classList.add('open');
@@ -1094,7 +1096,7 @@ function sluitCart() {
 function setSter(n) {
   gekozenSter = n;
   document.querySelectorAll('#sterKeuze span').forEach((s, i) => {
-    s.textContent = i < n ? '★' : '☆';
+    s.textContent = i < n ? '?' : '?';
     s.classList.toggle('actief', i < n);
   });
 }
@@ -1106,7 +1108,7 @@ function reviewVersturen(e) {
   e.preventDefault();
   if (!gekozenSter) { alert('Kies een beoordeling (1-5 sterren)'); return; }
   document.getElementById('reviewBevestiging').style.display = 'block';
-  e.target.querySelector('.form-submit').textContent = '✓ Verstuurd!';
+  e.target.querySelector('.form-submit').textContent = '? Verstuurd!';
   e.target.querySelector('.form-submit').style.background = 'var(--bruin-mid)';
   e.target.querySelector('.form-submit').disabled = true;
 }
@@ -1115,7 +1117,7 @@ let gekozenSter = 0;
 function toegangAanvragen(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '✓ Je ontvangt een e-mail met toegang!';
+  btn.textContent = '? Je ontvangt een e-mail met toegang!';
   btn.style.background = '#9B5E3D';
   btn.disabled = true;
 }
@@ -1134,35 +1136,3 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
-  e.target.querySelector('.form-submit').disabled = true;
-}
-let gekozenSter = 0;
-
-function toegangAanvragen(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.form-submit');
-  btn.textContent = '✓ Je ontvangt een e-mail met toegang!';
-  btn.style.background = '#9B5E3D';
-  btn.disabled = true;
-}
-// Smooth nav highlight
-const secties = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let huidig = '';
-  secties.forEach(s => {
-    const rect = s.getBoundingClientRect();
-    if (rect.top <= 100) huidig = s.getAttribute('id');
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('actief', a.getAttribute('href') === '#' + huidig);
-  });
-});
-</script>
-</body>
-</html>
-}
-// Smooth nav highlight
-const secties = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let huidig = '';
-  secties.forEach(s => {
