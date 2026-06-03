@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Het Onbeschreven Pad Academie</title>
+<link rel="icon" type="image/png" href="logopad.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1111,11 +1112,28 @@ function reviewVersturen(e) {
 }
 let gekozenSter = 0;
 
+function toegangAanvragen(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
   btn.textContent = '✓ Je ontvangt een e-mail met toegang!';
   btn.style.background = '#9B5E3D';
   btn.disabled = true;
+}
+// Smooth nav highlight
+const secties = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let huidig = '';
+  secties.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 100) huidig = s.getAttribute('id');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('actief', a.getAttribute('href') === '#' + huidig);
+  });
+});
+</script>
+</body>
+</html>
 }
 // Smooth nav highlight
 const secties = document.querySelectorAll('section[id]');
