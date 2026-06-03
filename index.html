@@ -1134,6 +1134,32 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
+  e.target.querySelector('.form-submit').disabled = true;
+}
+let gekozenSter = 0;
+
+function toegangAanvragen(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '✓ Je ontvangt een e-mail met toegang!';
+  btn.style.background = '#9B5E3D';
+  btn.disabled = true;
+}
+// Smooth nav highlight
+const secties = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let huidig = '';
+  secties.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 100) huidig = s.getAttribute('id');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('actief', a.getAttribute('href') === '#' + huidig);
+  });
+});
+</script>
+</body>
+</html>
 }
 // Smooth nav highlight
 const secties = document.querySelectorAll('section[id]');
